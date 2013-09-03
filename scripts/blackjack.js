@@ -8,7 +8,7 @@ state['player'] = {};
 state['player']['cards'] = [];
 
 startGame = function() {
-	drawGUI();
+	gui.drawNew();
 
 	$("#hit").click(function() {
 		hitCard('player');
@@ -23,22 +23,10 @@ startGame = function() {
 
 }
 
-drawGUI = function() {
-	$('.buttons').html('<a href="#" id="hit" class="button">Hit</a> <a href="#" id="stay" class="button">Stay</a>');
-
-	$('.container').append('<div class="eight columns center"><h4>Your cards</h4><div id="playerCards"></div></div>');
-	$('.container').append('<div class="eight columns center"><h4>Dealers cards</h4><div id="dealerCards"></div></div>');
-}
-
 hitCard = function(who) {
 	card = randomCard();
 	state['player']['cards'].push(card);
-
-	if (who == 'player') {
-		$("#playerCards").append(card['name'] + "<br />");
-	} else if (who == 'dealer') {
-		$("#dealerCards").append(card['name'] + "<br />");
-	}
+	gui.drawCard(card, who);
 }
 
 $(document).ready(function() {
