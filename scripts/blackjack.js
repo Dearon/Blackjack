@@ -1,91 +1,86 @@
-var gameState = {};
-gameState['cards'] = {};
-gameState['total'] = {};
-gameState['cards']['player'] = [];
-gameState['total']['player'] = 0;
-gameState['cards']['dealer'] = [];
-gameState['total']['dealer'] = 0;
+var gameState = {
+	deck: deck,
+	cards: {
+		player: [],
+		dealer: [],
+	},
 
-randomCard = function() {
-	var key = Math.floor(Math.random() * deck.length);
-	return deck[key];
-}
+	total: {
+		player: 0,
+		dealer: 0,
+	},
 
-startGame = function() {
-	gui.drawDealButtons();
+	updateTotal: function() {
+		var calculate = function(cards) {
+			total = 0;
+			aces = 0;
 
-	$("#deal").click(function() {
-		startRound();
-	});
-}
+			for (var i = 0; i < cards.length; i++) {
+				card = cards[i];
 
-startRound = function() {
-	gui.drawRoundButtons();
-	gui.drawCardArea();
+				if (card.value.length == 1) {
+					total += card.value[0];
+				} else {
+					aces += 1;
+				}
+			}
 
-	$("#hit").click(function() {
-		hit();
-	});
-	$("#stay").click(function() {
-		alert('Stay pressed');
-	});
+			if (aces == 1 && total <= 10) {
+				total += 11;
+			} else if (aces > 1) {
+				total += aces;
+			}
 
-	hitCard('player', true);
-	hitCard('player', true);
-	hitCard('dealer', true);
-	hitCard('dealer', false);
-
-	gui.drawCards();
-	updateTotal();
-	gui.updateStatus();
-}
-
-hit = function() {
-	hitCard('player', true);
-	gui.drawCards();
-	updateTotal();
-	gui.updateStatus();
-}
-
-hitCard = function(who, visible) {
-	card = randomCard();
-	card.visible = visible;
-	gameState['cards'][who].push(card);
-}
-
-updateTotal = function()
-{
-	gameState['total']['player'] = calculateTotal(gameState['cards']['player']);
-	gameState['total']['dealer'] = calculateTotal(gameState['cards']['dealer']);
-}
-
-calculateTotal = function(cards) {
-	total = 0;
-	aces = 0;
-
-	for (var i = 0; i < cards.length; i++) {
-		card = cards[i];
-
-		if (card.value.length == 1) {
-			total += card.value[0];
-		} else {
-			aces += 1;		
+			return total;
 		}
-	}
 
-	for (var i = 0; i < aces; i++) {
-		if (aces == 1 && total <= 10) {
-			total += 11;
-		} else {
-			total += 1;
+		this.total.player = calculate(this.cards.player);
+		this.total.dealer = calculate(this.cards.dealer);
+	},
+
+	drawCard: function(person) {
+		var card = this.deck[Math.floor(Math.random() * this.deck.length)];
+
+		if (person == 'player') {
+			this.cards.player.push(card);
+		} else if (person == 'dealer') {
+			this.cards.dealer.push(card);
 		}
-	}
 
-	return total;
-}
+		this.updateTotal();
+	},
+
+	newRound: function() {
+		this.drawCard('player');
+		this.drawCard('player');
+		this.drawCard('dealer');
+		this.drawCard('dealer');
+	},
+};
 
 $(document).ready(function() {
-	$("#new").click(function() {
-		startGame();
+	$("body").on("click", "#new", function() {
+		gui.dealButtons();
+	});
+
+	$("body").on("click", "#deal", function() {
+		gameState.newRound();
+
+		gui.roundButtons();
+		gui.cardArea();
+
+		gui.cards();
+		gui.status()
+	});
+
+	$("body").on("click", "#hit", function() {
+		gameState.drawCard('player');
+
+		gui.cards();
+		gui.status()
+	});
+
+	$("body").on("click", "#stay", function() {
+		alert('Stay pressed');
 	});
 });
