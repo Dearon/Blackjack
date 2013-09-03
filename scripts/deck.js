@@ -1,261 +1,210 @@
-var deck = [];
-
-card = {};
-card['name'] = 'Ace of Spades';
-card['value'] = [1, 11];
-deck.push(card);
-
-card = {};
-card['name'] = '2 of Spades';
-card['value'] = [2];
-deck.push(card);
-
-card = {};
-card['name'] = '3 of Spades';
-card['value'] = [3];
-deck.push(card);
-
-card = {};
-card['name'] = '4 of Spades';
-card['value'] = [4];
-deck.push(card);
-
-card = {};
-card['name'] = '5 of Spades';
-card['value'] = [5];
-deck.push(card);
-
-card = {};
-card['name'] = '6 of Spades';
-card['value'] = [6];
-deck.push(card);
-
-card = {};
-card['name'] = '7 of Spades';
-card['value'] = [7];
-deck.push(card);
-
-card = {};
-card['name'] = '8 of Spades';
-card['value'] = [8];
-deck.push(card);
-
-card = {};
-card['name'] = '9 of Spades';
-card['value'] = [9];
-deck.push(card);
-
-card = {};
-card['name'] = '10 of Spades';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'Jack of Spades';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'Queen of Spades';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'King of Spades';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'Ace of Hearts';
-card['value'] = [1, 11];
-deck.push(card);
-
-card = {};
-card['name'] = '2 of Hearts';
-card['value'] = [2];
-deck.push(card);
-
-card = {};
-card['name'] = '3 of Hearts';
-card['value'] = [3];
-deck.push(card);
-
-card = {};
-card['name'] = '4 of Hearts';
-card['value'] = [4];
-deck.push(card);
-
-card = {};
-card['name'] = '5 of Hearts';
-card['value'] = [5];
-deck.push(card);
-
-card = {};
-card['name'] = '6 of Hearts';
-card['value'] = [6];
-deck.push(card);
-
-card = {};
-card['name'] = '7 of Hearts';
-card['value'] = [7];
-deck.push(card);
-
-card = {};
-card['name'] = '8 of Hearts';
-card['value'] = [8];
-deck.push(card);
-
-card = {};
-card['name'] = '9 of Hearts';
-card['value'] = [9];
-deck.push(card);
-
-card = {};
-card['name'] = '10 of Hearts';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'Jack of Hearts';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'Queen of Hearts';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'King of Hearts';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'Ace of Diamonds';
-card['value'] = [1, 11];
-deck.push(card);
-
-card = {};
-card['name'] = '2 of Diamonds';
-card['value'] = [2];
-deck.push(card);
-
-card = {};
-card['name'] = '3 of Diamonds';
-card['value'] = [3];
-deck.push(card);
-
-card = {};
-card['name'] = '4 of Diamonds';
-card['value'] = [4];
-deck.push(card);
-
-card = {};
-card['name'] = '5 of Diamonds';
-card['value'] = [5];
-deck.push(card);
-
-card = {};
-card['name'] = '6 of Diamonds';
-card['value'] = [6];
-deck.push(card);
-
-card = {};
-card['name'] = '7 of Diamonds';
-card['value'] = [7];
-deck.push(card);
-
-card = {};
-card['name'] = '8 of Diamonds';
-card['value'] = [8];
-deck.push(card);
-
-card = {};
-card['name'] = '9 of Diamonds';
-card['value'] = [9];
-deck.push(card);
-
-card = {};
-card['name'] = '10 of Diamonds';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'Jack of Diamonds';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'Queen of Diamonds';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'King of Diamonds';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'Ace of Clubs';
-card['value'] = [1, 11];
-deck.push(card);
-
-card = {};
-card['name'] = '2 of Clubs';
-card['value'] = [2];
-deck.push(card);
-
-card = {};
-card['name'] = '3 of Clubs';
-card['value'] = [3];
-deck.push(card);
-
-card = {};
-card['name'] = '4 of Clubs';
-card['value'] = [4];
-deck.push(card);
-
-card = {};
-card['name'] = '5 of Clubs';
-card['value'] = [5];
-deck.push(card);
-
-card = {};
-card['name'] = '6 of Clubs';
-card['value'] = [6];
-deck.push(card);
-
-card = {};
-card['name'] = '7 of Clubs';
-card['value'] = [7];
-deck.push(card);
-
-card = {};
-card['name'] = '8 of Clubs';
-card['value'] = [8];
-deck.push(card);
-
-card = {};
-card['name'] = '9 of Clubs';
-card['value'] = [9];
-deck.push(card);
-
-card = {};
-card['name'] = '10 of Clubs';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'Jack of Clubs';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'Queen of Clubs';
-card['value'] = [10];
-deck.push(card);
-
-card = {};
-card['name'] = 'King of Clubs';
-card['value'] = [10];
-deck.push(card);
+var deck = [
+	{
+		name: 'Ace of Spades',
+		value: [1, 11],
+	},
+	{
+		name: '2 of Spades',
+		value: [2],
+	},
+	{
+		name: '3 of Spades',
+		value: [3],
+	},
+	{
+		name: '4 of Spades',
+		value: [4],
+	},
+	{
+		name: '5 of Spades',
+		value: [5],
+	},
+	{
+		name: '6 of Spades',
+		value: [6],
+	},
+	{
+		name: '7 of Spades',
+		value: [7],
+	},
+	{
+		name: '8 of Spades',
+		value: [8],
+	},
+	{
+		name: '9 of Spades',
+		value: [9],
+	},
+	{
+		name: '10 of Spades',
+		value: [10],
+	},
+	{
+		name: 'Jack of Spades',
+		value: [10],
+	},
+	{
+		name: 'Queen of Spades',
+		value: [10],
+	},
+	{
+		name: 'King of Spades',
+		value: [10],
+	},
+	{
+		name: 'Ace of Hearts',
+		value: [1, 11],
+	},
+	{
+		name: '2 of Hearts',
+		value: [2],
+	},
+	{
+		name: '3 of Hearts',
+		value: [3],
+	},
+	{
+		name: '4 of Hearts',
+		value: [4],
+	},
+	{
+		name: '5 of Hearts',
+		value: [5],
+	},
+	{
+		name: '6 of Hearts',
+		value: [6],
+	},
+	{
+		name: '7 of Hearts',
+		value: [7],
+	},
+	{
+		name: '8 of Hearts',
+		value: [8],
+	},
+	{
+		name: '9 of Hearts',
+		value: [9],
+	},
+	{
+		name: '10 of Hearts',
+		value: [10],
+	},
+	{
+		name: 'Jack of Hearts',
+		value: [10],
+	},
+	{
+		name: 'Queen of Hearts',
+		value: [10],
+	},
+	{
+		name: 'King of Hearts',
+		value: [10],
+	},
+	{
+		name: 'Ace of Diamonds',
+		value: [1, 11],
+	},
+	{
+		name: '2 of Diamonds',
+		value: [2],
+	},
+	{
+		name: '3 of Diamonds',
+		value: [3],
+	},
+	{
+		name: '4 of Diamonds',
+		value: [4],
+	},
+	{
+		name: '5 of Diamonds',
+		value: [5],
+	},
+	{
+		name: '6 of Diamonds',
+		value: [6],
+	},
+	{
+		name: '7 of Diamonds',
+		value: [7],
+	},
+	{
+		name: '8 of Diamonds',
+		value: [8],
+	},
+	{
+		name: '9 of Diamonds',
+		value: [9],
+	},
+	{
+		name: '10 of Diamonds',
+		value: [10],
+	},
+	{
+		name: 'Jack of Diamonds',
+		value: [10],
+	},
+	{
+		name: 'Queen of Diamonds',
+		value: [10],
+	},
+	{
+		name: 'King of Diamonds',
+		value: [10],
+	},
+	{
+		name: 'Ace of Clubs',
+		value: [1, 11],
+	},
+	{
+		name: '2 of Clubs',
+		value: [2],
+	},
+	{
+		name: '3 of Clubs',
+		value: [3],
+	},
+	{
+		name: '4 of Clubs',
+		value: [4],
+	},
+	{
+		name: '5 of Clubs',
+		value: [5],
+	},
+	{
+		name: '6 of Clubs',
+		value: [6],
+	},
+	{
+		name: '7 of Clubs',
+		value: [7],
+	},
+	{
+		name: '8 of Clubs',
+		value: [8],
+	},
+	{
+		name: '9 of Clubs',
+		value: [9],
+	},
+	{
+		name: '10 of Clubs',
+		value: [10],
+	},
+	{
+		name: 'Jack of Clubs',
+		value: [10],
+	},
+	{
+		name: 'Queen of Clubs',
+		value: [10],
+	},
+	{
+		name: 'King of Clubs',
+		value: [10],
+	}
+];

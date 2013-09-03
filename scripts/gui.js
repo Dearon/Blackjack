@@ -7,11 +7,11 @@ var gui = {
 
 	drawCard: function(card, person) {
 		if (person == 'player') {
-			$("#playerCards").append(card['name'] + "<br />");
+			$("#playerCards").append(card.name + "<br />");
 		}
 
 		if (person == 'dealer') {
-			$("#dealerCards").append(card['name'] + "<br />");
+			$("#dealerCards").append(card.name + "<br />");
 		}
 	}
 }
