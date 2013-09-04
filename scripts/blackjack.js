@@ -60,24 +60,21 @@ var gameState = {
 
 $(document).ready(function() {
 	$("body").on("click", "#new", function() {
-		gui.dealButtons();
+		gui.startGame();
 	});
 
 	$("body").on("click", "#deal", function() {
 		gameState.newRound();
 
-		gui.roundButtons();
-		gui.cardArea();
-
-		gui.cards();
-		gui.status()
+		gui.startRound();
+		gui.updateRound();
 	});
 
 	$("body").on("click", "#hit", function() {
 		gameState.drawCard('player');
 
-		gui.cards();
-		gui.status()
+		gui.startRound();
+		gui.updateRound();
 	});
 
 	$("body").on("click", "#stay", function() {
