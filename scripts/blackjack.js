@@ -10,7 +10,7 @@ var gameState = {
 		dealer: 0,
 	},
 
-	updateTotal: function() {
+	calculateTotal: function() {
 		var calculate = function(cards) {
 			total = 0;
 			aces = 0;
@@ -38,43 +38,75 @@ var gameState = {
 		this.total.dealer = calculate(this.cards.dealer);
 	},
 
-	drawCard: function(person) {
-		var card = this.deck[Math.floor(Math.random() * this.deck.length)];
+	randomizeDeck: function() {
+		var randomKey;
+		var value;
 
-		if (person == 'player') {
-			this.cards.player.push(card);
-		} else if (person == 'dealer') {
-			this.cards.dealer.push(card);
+		for (var i = this.deck.length - 1; i >= 0; i--) {
+			randomKey = Math.floor(Math.random() * i);
+			value = this.deck[i];
+			this.deck[i] = this.deck[randomKey];
+			this.deck[randomKey] = value;
 		}
-
-		this.updateTotal();
 	},
 
-	newRound: function() {
-		this.drawCard('player');
-		this.drawCard('player');
-		this.drawCard('dealer');
-		this.drawCard('dealer');
+	startGame: function() {
+		this.randomizeDeck();
+
+		gui.startGame();
+	},
+
+	startRound: function() {
+		this.cards.player.push(this.deck.shift());
+		this.cards.player.push(this.deck.shift());
+		this.cards.dealer.push(this.deck.shift());
+		this.cards.dealer.push(this.deck.shift());
+
+		this.calculateTotal();
+
+		gui.startRound();
+		gui.updateRound();
+	},
+
+	updateRound: function(action) {
+		if (action == 'hit') {
+			this.cards.player.push(this.deck.shift());
+		}
+
+		this.calculateTotal();
+
+		if (this.total.player > 21) {
+			this.endRound();
+		} else {
+			gui.updateRound();
+		}
+	},
+
+	endRound: function() {
+		while (this.cards.player.length > 0) {
+			this.deck.push(this.cards.player.shift());
+		}
+
+		while (this.cards.dealer.length > 0) {
+			this.deck.push(this.cards.dealer.shift());
+		}
+
+		gui.endRound();
+		this.calculateTotal();
 	},
 };
 
 $(document).ready(function() {
 	$("body").on("click", "#new", function() {
-		gui.startGame();
+		gameState.startGame();
 	});
 
 	$("body").on("click", "#deal", function() {
-		gameState.newRound();
-
-		gui.startRound();
-		gui.updateRound();
+		gameState.startRound();
 	});
 
 	$("body").on("click", "#hit", function() {
-		gameState.drawCard('player');
-
-		gui.startRound();
-		gui.updateRound();
+		gameState.updateRound('hit');
 	});
 
 	$("body").on("click", "#stay", function() {

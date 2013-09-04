@@ -1,14 +1,14 @@
 var gui = {
 	startGame: function() {
 		$('.buttons').html('<a href="#" id="deal" class="button">Deal</a>');
-		$('.container').append('<div class="eight columns center" id="player"></div>');
-		$('.container').append('<div class="eight columns center" id="dealer"></div>');
+		$('.container').append('<div class="eight columns center" id="player"><h4></h4> <div class="cards"></div></div>');
+		$('.container').append('<div class="eight columns center" id="dealer"><h4></h4> <div class="cards"></div></div>');
 	},
 
 	startRound: function() {
 		$('.buttons').html('<a href="#" id="hit" class="button">Hit</a> <a href="#" id="stay" class="button">Stay</a>');
-		$('#player').html('<h4>Your cards</h4> <div class="cards"></div>');
-		$('#dealer').html('<h4>Dealers cards</h4> <div class="cards"></div>');
+		$('#player h4').html('Your cards');
+		$('#dealer h4').html('Dealers cards');
 	},
 
 	updateRound: function() {
@@ -25,10 +25,17 @@ var gui = {
 			$("#dealer .cards").append(card.name + "<br />");
 		}
 
+		$("#status").html('You have ' + gameState.total.player + ' points');
+	},
+
+	endRound: function() {
+		$('h4').empty();
+		$('.cards').empty();
+
 		if (gameState.total.player > 21) {
-			$("#status").html('You have gone bust');
-		} else {
-			$("#status").html('You have ' + gameState.total.player + ' points');
+			$("#status").html('The dealer has won, you\'ve gone bust');
 		}
-	}
+
+		$('.buttons').html('<a href="#" id="deal" class="button">Deal</a>');
+	},
 }
