@@ -1,4 +1,4 @@
-var gameState = {
+var game = {
 	deck: deck,
 	cards: {
 		player: [],
@@ -18,7 +18,7 @@ var gameState = {
 		this.ready = false;
 
 		window.setTimeout(function() {
-			gameState.ready = true;
+			game.ready = true;
 		}, 600);
 	},
 
@@ -107,6 +107,8 @@ var gameState = {
 				gui.updateRound();
 			}
 
+			gui.updateRound();
+
 			if (this.total.dealer > 21) {
 				this.endRound('You have won, the dealer has gone bust');
 			} else if (this.total.dealer > this.total.player) {
@@ -135,27 +137,27 @@ var gameState = {
 
 $(document).ready(function() {
 	$("body").on("click", "#new", function() {
-		gameState.startGame();
+		game.startGame();
 	});
 
 	$("body").on("click", "#deal", function() {
-		if (gameState.ready) {
-			gameState.toggleReady();
-			gameState.startRound();
+		if (game.ready) {
+			game.toggleReady();
+			game.startRound();
 		}
 	});
 
 	$("body").on("click", "#hit", function() {
-		if (gameState.ready) {
-			gameState.toggleReady();
-			gameState.updateRound('hit');
+		if (game.ready) {
+			game.toggleReady();
+			game.updateRound('hit');
 		}
 	});
 
 	$("body").on("click", "#stay", function() {
-		if (gameState.ready) {
-			gameState.toggleReady();
-			gameState.updateRound('stay');
+		if (game.ready) {
+			game.toggleReady();
+			game.updateRound('stay');
 		}
 	});
 });

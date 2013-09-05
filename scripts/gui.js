@@ -16,8 +16,8 @@ var gui = {
 	},
 
 	updateRound: function(card, side) {
-		for (var i = 0; i < gameState.cards.player.length; i++) {
-			card = gameState.cards.player[i];
+		for (var i = 0; i < game.cards.player.length; i++) {
+			card = game.cards.player[i];
 
 			if (! $('#card' + card.id).length) {
 				$("#player .cards").append('<span id="card' + card.id + '" class="card"></span>');
@@ -26,29 +26,29 @@ var gui = {
 			}
 		}
 
-		for (var i = 0; i < gameState.cards.dealer.length; i++) {
-			card = gameState.cards.dealer[i];
+		for (var i = 0; i < game.cards.dealer.length; i++) {
+			card = game.cards.dealer[i];
 
 			if (! $('#card' + card.id).length) {
 				$("#dealer .cards").append('<span id="card' + card.id + '" class="card"></span>');
 
-				if (gameState.action == 'hit' && i == 1) {
+				if (game.action == 'hit' && i == 1) {
 					$('#card' + card.id).html('<img src="img/' + deckBack + '" />').hide().fadeIn(600);
 				} else {
 					$('#card' + card.id).html('<img src="img/' + card.image + '" />').hide().fadeIn(600);
 				}
-			} else if (gameState.action == 'stay' && i == 1) {
+			} else if (game.action == 'stay' && i == 1) {
 				$('#card' + card.id).hide();
 				$('#card' + card.id).html('<img src="img/' + card.image + '" />').fadeIn(600);
 			}
 		}
 
-		$('#player h4').html('Your cards (' + gameState.total.player + ' points)');
+		$('#player h4').html('Your cards (' + game.total.player + ' points)');
 
-		if (gameState.action == 'hit') {
+		if (game.action == 'hit') {
 			$('#dealer h4').html('Dealers cards');
 		} else {
-			$('#dealer h4').html('Dealers cards (' + gameState.total.dealer + ' points)');
+			$('#dealer h4').html('Dealers cards (' + game.total.dealer + ' points)');
 		}
 	},
 
