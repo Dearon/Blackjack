@@ -12,6 +12,7 @@ var gui = {
 		$('#dealer h4').html('Dealers cards');
 
 		$('.cards').empty();
+		$("#status").empty();
 	},
 
 	updateRound: function(card, side) {
@@ -35,7 +36,8 @@ var gui = {
 			}
 		}
 
-		$("#status").html('You have ' + gameState.total.player + ' points');
+		$('#player h4').html('Your cards (' + gameState.total.player + ' points)');
+		$('#dealer h4').html('Dealers cards (' + gameState.total.dealer + ' points)');
 	},
 
 	endRound: function(message) {
