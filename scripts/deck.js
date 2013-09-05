@@ -206,5 +206,9 @@ var deck = [
 	{
 		name: 'King of Clubs',
 		value: [10],
-	}
+	},
 ];
+
+for (var i = 0; i <= deck.length -1; i++) {
+	deck[i].id = i;
+}

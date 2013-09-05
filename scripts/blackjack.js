@@ -10,6 +10,16 @@ var gameState = {
 		dealer: 0,
 	},
 
+	ready: true,
+
+	toggleReady: function() {
+		this.ready = false;
+
+		window.setTimeout(function() {
+			gameState.ready = true;
+		}, 600);
+	},
+
 	calculateTotal: function() {
 		var calculate = function(cards) {
 			total = 0;
@@ -73,11 +83,10 @@ var gameState = {
 			this.cards.player.push(this.deck.shift());
 
 			this.calculateTotal();
+			gui.updateRound();
 
 			if (this.total.player > 21) {
 				this.endRound('The dealer has won, you have gone bust');
-			} else {
-				gui.updateRound();
 			}
 		} else if (action == 'stay') {
 			while (this.total.dealer < 17) {
@@ -88,8 +97,10 @@ var gameState = {
 
 			if (this.total.dealer > 21) {
 				this.endRound('You have won, the dealer has gone bust');
-			} else if (this.total.dealer >= this.total.player) {
+			} else if (this.total.dealer > this.total.player) {
 				this.endRound('The dealer has won');
+			} else if (this.total.dealer == this.total.player) {
+				this.endRound('It\'s a tie');
 			} else {
 				this.endRound('You have won');
 			}
@@ -116,14 +127,23 @@ $(document).ready(function() {
 	});
 
 	$("body").on("click", "#deal", function() {
-		gameState.startRound();
+		if (gameState.ready) {
+			gameState.toggleReady();
+			gameState.startRound();
+		}
 	});
 
 	$("body").on("click", "#hit", function() {
-		gameState.updateRound('hit');
+		if (gameState.ready) {
+			gameState.toggleReady();
+			gameState.updateRound('hit');
+		}
 	});
 
 	$("body").on("click", "#stay", function() {
-		gameState.updateRound('stay');
+		if (gameState.ready) {
+			gameState.toggleReady();
+			gameState.updateRound('stay');
+		}
 	});
 });

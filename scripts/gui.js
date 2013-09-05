@@ -7,21 +7,32 @@ var gui = {
 
 	startRound: function() {
 		$('.buttons').html('<a href="#" id="hit" class="button">Hit</a> <a href="#" id="stay" class="button">Stay</a>');
+
 		$('#player h4').html('Your cards');
 		$('#dealer h4').html('Dealers cards');
+
+		$('.cards').empty();
 	},
 
-	updateRound: function() {
-		$('.cards').empty();
-
+	updateRound: function(card, side) {
 		for (var i = 0; i < gameState.cards.player.length; i++) {
 			card = gameState.cards.player[i];
-			$("#player .cards").append(card.name + "<br />");
+
+			if (! $('#card' + card.id).length) {
+				$("#player .cards").append('<div id="card' + card.id + '"></div>');
+
+				$('#card' + card.id).html(card.name).hide().fadeIn(600);
+			}
 		}
 
 		for (var i = 0; i < gameState.cards.dealer.length; i++) {
 			card = gameState.cards.dealer[i];
-			$("#dealer .cards").append(card.name + "<br />");
+
+			if (! $('#card' + card.id).length) {
+				$("#dealer .cards").append('<div id="card' + card.id + '"></div>');
+
+				$('#card' + card.id).html(card.name).hide().fadeIn(600);
+			}
 		}
 
 		$("#status").html('You have ' + gameState.total.player + ' points');
