@@ -10,6 +10,8 @@ var gameState = {
 		dealer: 0,
 	},
 
+	action: 'hit',
+
 	ready: true,
 
 	toggleReady: function() {
@@ -67,6 +69,8 @@ var gameState = {
 	},
 
 	startRound: function() {
+		this.action = 'hit';
+
 		this.cards.player.push(this.deck.shift());
 		this.cards.player.push(this.deck.shift());
 		this.cards.dealer.push(this.deck.shift());
@@ -79,6 +83,8 @@ var gameState = {
 	},
 
 	updateRound: function(action) {
+		this.action = action;
+
 		if (action == 'hit') {
 			this.cards.player.push(this.deck.shift());
 

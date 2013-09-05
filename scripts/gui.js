@@ -32,7 +32,14 @@ var gui = {
 			if (! $('#card' + card.id).length) {
 				$("#dealer .cards").append('<span id="card' + card.id + '" class="card"></span>');
 
-				$('#card' + card.id).html('<img src="img/' + card.image + '" />').hide().fadeIn(600);
+				if (gameState.action == 'hit' && i == 1) {
+					$('#card' + card.id).html('<img src="img/' + deckBack + '" />').hide().fadeIn(600);
+				} else {
+					$('#card' + card.id).html('<img src="img/' + card.image + '" />').hide().fadeIn(600);
+				}
+			} else if (gameState.action == 'stay' && i == 1) {
+				$('#card' + card.id).hide();
+				$('#card' + card.id).html('<img src="img/' + card.image + '" />').fadeIn(600);
 			}
 		}
 

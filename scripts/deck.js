@@ -264,3 +264,5 @@ var deck = [
 for (var i = 0; i <= deck.length -1; i++) {
 	deck[i].id = i;
 }
+
+var deckBack = 'back191.gif';
