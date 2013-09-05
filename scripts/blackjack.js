@@ -89,11 +89,17 @@ var gameState = {
 			this.cards.player.push(this.deck.shift());
 
 			this.calculateTotal();
+
+			if (this.total.player > 21) {
+				this.action = 'stay';
+			}
+
 			gui.updateRound();
 
 			if (this.total.player > 21) {
 				this.endRound('The dealer has won, you have gone bust');
 			}
+
 		} else if (action == 'stay') {
 			while (this.total.dealer < 17) {
 				this.cards.dealer.push(this.deck.shift());
