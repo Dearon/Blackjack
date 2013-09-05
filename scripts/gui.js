@@ -17,7 +17,7 @@ var gui = {
 
 	updateRound: function(card, side) {
 		for (var i = 0; i < game.cards.player.length; i++) {
-			card = game.cards.player[i];
+			var card = game.cards.player[i];
 
 			if (! $('#card' + card.id).length) {
 				$("#player .cards").append('<span id="card' + card.id + '" class="card"></span>');
@@ -27,7 +27,7 @@ var gui = {
 		}
 
 		for (var i = 0; i < game.cards.dealer.length; i++) {
-			card = game.cards.dealer[i];
+			var card = game.cards.dealer[i];
 
 			if (! $('#card' + card.id).length) {
 				$("#dealer .cards").append('<span id="card' + card.id + '" class="card"></span>');
