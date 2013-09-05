@@ -71,18 +71,32 @@ var gameState = {
 	updateRound: function(action) {
 		if (action == 'hit') {
 			this.cards.player.push(this.deck.shift());
-		}
 
-		this.calculateTotal();
+			this.calculateTotal();
 
-		if (this.total.player > 21) {
-			this.endRound();
-		} else {
-			gui.updateRound();
+			if (this.total.player > 21) {
+				this.endRound('The dealer has won, you have gone bust');
+			} else {
+				gui.updateRound();
+			}
+		} else if (action == 'stay') {
+			while (this.total.dealer < 17) {
+				this.cards.dealer.push(this.deck.shift());
+				this.calculateTotal();
+				gui.updateRound();
+			}
+
+			if (this.total.dealer > 21) {
+				this.endRound('You have won, the dealer has gone bust');
+			} else if (this.total.dealer >= this.total.player) {
+				this.endRound('The dealer has won');
+			} else {
+				this.endRound('You have won');
+			}
 		}
 	},
 
-	endRound: function() {
+	endRound: function(message) {
 		while (this.cards.player.length > 0) {
 			this.deck.push(this.cards.player.shift());
 		}
@@ -91,7 +105,7 @@ var gameState = {
 			this.deck.push(this.cards.dealer.shift());
 		}
 
-		gui.endRound();
+		gui.endRound(message);
 		this.calculateTotal();
 	},
 };
@@ -110,6 +124,6 @@ $(document).ready(function() {
 	});
 
 	$("body").on("click", "#stay", function() {
-		alert('Stay pressed');
+		gameState.updateRound('stay');
 	});
 });

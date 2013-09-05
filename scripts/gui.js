@@ -12,8 +12,7 @@ var gui = {
 	},
 
 	updateRound: function() {
-		$("#player .cards").empty();
-		$("#dealer .cards").empty();
+		$('.cards').empty();
 
 		for (var i = 0; i < gameState.cards.player.length; i++) {
 			card = gameState.cards.player[i];
@@ -28,14 +27,8 @@ var gui = {
 		$("#status").html('You have ' + gameState.total.player + ' points');
 	},
 
-	endRound: function() {
-		$('h4').empty();
-		$('.cards').empty();
-
-		if (gameState.total.player > 21) {
-			$("#status").html('The dealer has won, you\'ve gone bust');
-		}
-
+	endRound: function(message) {
+		$("#status").html(message);
 		$('.buttons').html('<a href="#" id="deal" class="button">Deal</a>');
 	},
 }
