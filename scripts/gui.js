@@ -44,7 +44,12 @@ var gui = {
 		}
 
 		$('#player h4').html('Your cards (' + gameState.total.player + ' points)');
-		$('#dealer h4').html('Dealers cards (' + gameState.total.dealer + ' points)');
+
+		if (gameState.action == 'hit') {
+			$('#dealer h4').html('Dealers cards');
+		} else {
+			$('#dealer h4').html('Dealers cards (' + gameState.total.dealer + ' points)');
+		}
 	},
 
 	endRound: function(message) {
