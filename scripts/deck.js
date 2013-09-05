@@ -242,7 +242,7 @@ var deck = [
 	{
 		name: '10 of Clubs',
 		value: [10],
-		image: '010c.gif',
+		image: '10c.gif',
 	},
 	{
 		name: 'Jack of Clubs',
