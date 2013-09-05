@@ -19,9 +19,9 @@ var gui = {
 			card = gameState.cards.player[i];
 
 			if (! $('#card' + card.id).length) {
-				$("#player .cards").append('<div id="card' + card.id + '"></div>');
+				$("#player .cards").append('<span id="card' + card.id + '" class="card"></span>');
 
-				$('#card' + card.id).html(card.name).hide().fadeIn(600);
+				$('#card' + card.id).html('<img src="img/' + card.image + '" />').hide().fadeIn(600);
 			}
 		}
 
@@ -29,9 +29,9 @@ var gui = {
 			card = gameState.cards.dealer[i];
 
 			if (! $('#card' + card.id).length) {
-				$("#dealer .cards").append('<div id="card' + card.id + '"></div>');
+				$("#dealer .cards").append('<span id="card' + card.id + '" class="card"></span>');
 
-				$('#card' + card.id).html(card.name).hide().fadeIn(600);
+				$('#card' + card.id).html('<img src="img/' + card.image + '" />').hide().fadeIn(600);
 			}
 		}
 
