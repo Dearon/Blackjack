@@ -38,8 +38,7 @@ var gui = {
 					$('#card' + card.id).html('<img src="img/' + card.image + '" />').hide().fadeIn(600);
 				}
 			} else if (game.action == 'stay' && i == 1) {
-				$('#card' + card.id).hide();
-				$('#card' + card.id).html('<img src="img/' + card.image + '" />').fadeIn(600);
+				$('#card' + card.id).html('<img src="img/' + card.image + '" />');
 			}
 		}
 
